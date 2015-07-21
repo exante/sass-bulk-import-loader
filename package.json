@@ -1,0 +1,22 @@
+{
+  "name": "sass-bulk-import-loader",
+  "version": "0.0.1",
+  "description": "import whole directories in SCSS",
+  "main": "index.js",
+  "keywords": [
+    "webpack",
+    "sass",
+    "scss",
+    "import",
+    "glob"
+  ],
+  "author": "Sergey Rubanov",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:chicoxyzzy/gsass-bulk-import-loader.git"
+  },
+  "peerDependencies": {
+    "glob": "^5.0.14"
+  }
+}
