@@ -24,7 +24,7 @@ npm install --save-dev sass-bulk-import-loader
 ```
 
 ```javascript
-require('css!loader!sass!sass-bulk-import');
+require('css!sass!sass-bulk-import');
 ```
 
 or in your Webpack config
