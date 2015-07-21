@@ -14,9 +14,10 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git@github.com:chicoxyzzy/gsass-bulk-import-loader.git"
+    "url": "git@github.com:chicoxyzzy/sass-bulk-import-loader.git"
   },
   "peerDependencies": {
     "glob": "^5.0.14"
-  }
+  },
+  "devDependencies": {}
 }
