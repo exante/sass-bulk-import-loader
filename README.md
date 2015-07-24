@@ -23,8 +23,19 @@ npm install --save-dev sass-bulk-import-loader
 
 ```
 
+then add loader to `require` call
+
 ```javascript
-require('css!sass!sass-bulk-import');
+require('css!sass!sass-bulk-import!./styles.scss');
 ```
 
-or in your Webpack config
+or webpack config
+
+```javascript
+      {
+        test: /\.scss$/,
+        loader: 'style!css!sass!sass-bulk-import'
+      }
+```
+
+enjoy
