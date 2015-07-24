@@ -1,6 +1,6 @@
 {
   "name": "sass-bulk-import-loader",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "import whole directories in SCSS",
   "main": "index.js",
   "keywords": [
