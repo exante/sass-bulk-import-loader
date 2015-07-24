@@ -39,8 +39,9 @@ module.exports = function(source, map) {
     var replaceString = '';
 
     files.forEach(function(filename){
+      this.addDependency(filename);
       replaceString += process(filename);
-    });
+    }, this);
 
     content = content.replace(sub, replaceString);
   }
