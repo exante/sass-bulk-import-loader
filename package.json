@@ -1,7 +1,7 @@
 {
   "name": "sass-bulk-import-loader",
   "version": "0.0.3",
-  "description": "import whole directories in SCSS",
+  "description": "import directories in SCSS with Webpack ",
   "main": "index.js",
   "keywords": [
     "webpack",
