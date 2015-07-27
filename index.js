@@ -35,11 +35,13 @@ module.exports = function(source, map) {
     var sub = result[0];
     var globName = result[1];
 
+    var directory = path.join(this.context, globName.slice(0, -1));
     var files = glob.sync(path.join(this.context, globName));
     var replaceString = '';
 
+    this.addContextDependency(directory);
+
     files.forEach(function(filename){
-      this.addDependency(filename);
       replaceString += process(filename);
     }, this);
 
