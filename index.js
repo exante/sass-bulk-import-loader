@@ -6,15 +6,16 @@ var glob = require('glob');
 
 module.exports = function(source, map) {
 
-  var process = function(filename) {
+  var process = function(filename, context) {
     var replaceString = '';
+    var abs = path.join(context, filename);
 
-    if (fs.statSync(filename).isDirectory()) {
+    if (fs.statSync(abs).isDirectory()) {
       // Ignore directories start with _
-      if (path.basename(filename).substring(0, 1) == '_') return '';
+      if (path.basename(abs).substring(0, 1) == '_') return '';
 
-      fs.readdirSync(filename).forEach(function (file) {
-        replaceString += process(filename + path.sep + file);
+      fs.readdirSync(abs).forEach(function (file) {
+        replaceString += process(path.join(path.relative(context, abs), file), context);
       });
       return replaceString;
     } else {
@@ -29,20 +30,21 @@ module.exports = function(source, map) {
   var content = source;
   var reg = /@import\s+[\"']([^\"']*\*[^\"']*)[\"'];?/;
   var result;
+  var context = this.context;
   this.cacheable && this.cacheable();
 
   while((result = reg.exec(content)) !== null) {
     var sub = result[0];
     var globName = result[1];
 
-    var directory = path.join(this.context, globName.slice(0, -1));
-    var files = glob.sync(path.join(this.context, globName));
+    var directory = path.join(context, globName.slice(0, -1));
+    var files = glob.sync(globName, { cwd: context });
     var replaceString = '';
 
     this.addContextDependency(directory);
 
-    files.forEach(function(filename){
-      replaceString += process(filename);
+    files.forEach(function(filename) {
+      replaceString += process(filename, context);
     }, this);
 
     content = content.replace(sub, replaceString);
