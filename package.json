@@ -16,8 +16,7 @@
     "type": "git",
     "url": "git@github.com:chicoxyzzy/sass-bulk-import-loader.git"
   },
-  "peerDependencies": {
+  "dependencies": {
     "glob": "^5.0.14"
-  },
-  "devDependencies": {}
+  }
 }
